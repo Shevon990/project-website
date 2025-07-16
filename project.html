@@ -1,173 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>BugSpot AI</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Buttons</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('publication20240314110325.jpeg'); /* Replace with your image URL */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white; /* Text color for better contrast */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
-        .container {
-            background-color: rgba(47, 45, 45, 0.7); /* Semi-transparent overlay for readability */
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 20px auto;
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            z-index: 1;
         }
 
-        h1, h2 , h3 {
-            text-align: center;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
+        .btn {
+            position: relative;
+            width: 220px;
+            height: 60px;
             border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
+            outline: none;
+            color: white;
+            background: #111;
             cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        button:hover {
-            background-color: #45a049;
+        .btn:nth-child(1) {
+            background: #f72585;
+        }
+        .btn:nth-child(2) {
+            background: #7209b7;
+        }
+        .btn:nth-child(3) {
+            background: #3a86ff;
+        }
+        .btn:nth-child(4) {
+            background: #4cc9f0;
+        }
+        .btn:nth-child(5) {
+            background: #2ec4b6;
         }
 
-        #webcam, #uploadedImage {
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .bubbles {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubble 15s linear infinite;
+        }
+
+        @keyframes bubble {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 2.5rem;
+        }
+
+        /* Remove default link styling inside buttons */
+        .btn a {
+            color: white;
+            text-decoration: none;
             display: block;
-            margin: 10px auto;
-            border: 3px solid white;
-            border-radius: 5px;
-        }
-
-        #output {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+            width: 100%;
+            height: 100%;
+            line-height: 60px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>BUGSPOT AI 🌿</h1>
-        <h3><em>Detect plant diseases in seconds!</em><h3>
+    <div class="button-container">
+        <h1>Choose Your Action</h1>
+        <!-- PDF Button (Replace with your PDF link) -->
+        <button class="btn">
+            <a href="Proposal- 41.pdf" target="_blank">Proposal Document</a>
+        </button>
         
-        <!-- Webcam Section -->
-        <div>
-            <h2>Webcam Prediction</h2>
-            <video id="webcam" width="320" height="240" autoplay muted></video><br>
-            <button id="startWebcam">Start Webcam</button>
-            <button id="stopWebcam">Stop Webcam</button>
-        </div>
-
-        <!-- File Upload Section -->
-        <div>
-            <h2>Image Upload Prediction</h2>
-            <input type="file" id="fileUpload" accept="image/*">
-            <img id="uploadedImage" width="320" height="240" style="display: none;">
-        </div>
-
-        <!-- Prediction Output -->
-        <div>
-            <h2>Predictions</h2>
-            <div id="output">Predictions will appear here...</div>
-        </div>
+        <!-- Video Button (Replace with your video link) -->
+        <button class="btn">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Watch Video</a>
+        </button>
+        
+        <!-- Additional Buttons (Optional) -->
+        <button class="btn">Create</button>
+        <button class="btn">Connect</button>
+        <button class="btn">Start Now</button>
     </div>
 
     <script>
-        let model;
-        let webcamStream;
-        const outputDiv = document.getElementById('output');
-
-        // Load Teachable Machine Model
-        async function init() {
-            const modelURL = "https://storage.googleapis.com/tm-model/4xjO9oVqM/model.json"; // Replace with your hosted model URL
-            model = await tf.loadLayersModel(modelURL);
-            outputDiv.innerHTML = "Model loaded! Ready for predictions.";
+        // Create animated bubbles in background
+        function createBubbles() {
+            const bubbles = document.createElement('span');
+            bubbles.classList.add('bubbles');
+            
+            const size = Math.random() * 50 + 10;
+            bubbles.style.width = size + 'px';
+            bubbles.style.height = size + 'px';
+            bubbles.style.left = Math.random() * window.innerWidth + 'px';
+            
+            document.body.appendChild(bubbles);
+            
+            setTimeout(() => {
+                bubbles.remove();
+            }, 15000);
         }
-
-        // Initialize on page load
-        init();
-
-        // ===== Webcam Prediction =====
-        const startWebcamBtn = document.getElementById('startWebcam');
-        const stopWebcamBtn = document.getElementById('stopWebcam');
-        const webcamElement = document.getElementById('webcam');
-
-        startWebcamBtn.addEventListener('click', async () => {
-            try {
-                webcamStream = await navigator.mediaDevices.getUserMedia({ video: true });
-                webcamElement.srcObject = webcamStream;
-                
-                // Continuously predict from webcam
-                setInterval(() => predictWebcam(webcamElement), 500); // Predict every 500ms
-                outputDiv.innerHTML = "Webcam started. Predicting...";
-            } catch (err) {
-                outputDiv.innerHTML = "Error accessing webcam: " + err.message;
-            }
-        });
-
-        stopWebcamBtn.addEventListener('click', () => {
-            if (webcamStream) {
-                webcamStream.getTracks().forEach(track => track.stop());
-                webcamElement.srcObject = null;
-                outputDiv.innerHTML = "Webcam stopped.";
-            }
-        });
-
-        async function predictWebcam(videoElement) {
-            if (!model) return;
-
-            // Preprocess webcam frame
-            const tensor = tf.browser.fromPixels(videoElement)
-                .resizeNearestNeighbor([224, 224]) // Adjust to your model's input size
-                .toFloat()
-                .expandDims();
-
-            const predictions = await model.predict(tensor).data();
-            outputDiv.innerHTML = `Webcam Predictions: ${Array.from(predictions).map(p => p.toFixed(3)).join(', ')}`;
-            tensor.dispose(); // Clean up memory
-        }
-
-        // ===== File Upload Prediction =====
-        const fileUpload = document.getElementById('fileUpload');
-        const uploadedImage = document.getElementById('uploadedImage');
-
-        fileUpload.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                uploadedImage.src = event.target.result;
-                uploadedImage.style.display = 'block';
-                predictUploadedImage(uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        });
-
-        async function predictUploadedImage(imageElement) {
-            if (!model) return;
-
-            // Preprocess uploaded image
-            const tensor = tf.browser.fromPixels(imageElement)
-                .resizeNearestNeighbor([224, 224])
-                .toFloat()
-                .expandDims();
-
-            const predictions = await model.predict(tensor).data();
-            outputDiv.innerHTML = `Uploaded Image Predictions: ${Array.from(predictions).map(p => p.toFixed(3)).join(', ')}`;
-            tensor.dispose();
-        }
+        
+        setInterval(createBubbles, 300);
     </script>
 </body>
 </html>
