@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Bedroom Innovation Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -256,6 +257,201 @@
             animation: fadeIn 1s ease-out 1.2s both;
         }
         
+        /* AI Chat Bot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .chatbot-button i {
+            font-size: 24px;
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-window.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .chat-header {
+            padding: 15px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 5px;
+        }
+        
+        .chat-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .chat-header p {
+            font-size: 12px;
+            color: #cbd5e1;
+        }
+        
+        .chat-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .bot-message {
+            align-self: flex-start;
+            background: rgba(102, 126, 234, 0.3);
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+        
+        .chat-input input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .chat-input button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Typing indicator */
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background: rgba(102, 126, 234, 0.3);
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            opacity: 0.6;
+            animation: typing 1.5s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             h1 {
@@ -277,6 +473,12 @@
             .content {
                 padding: 30px 20px;
             }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+                right: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -287,6 +489,16 @@
             .btn {
                 height: 55px;
                 font-size: 14px;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                height: 380px;
+            }
+            
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -353,6 +565,42 @@
         
         <div class="footer">
             <p>© 2023 Smart Bedroom Innovation | All Rights Reserved</p>
+        </div>
+    </div>
+
+    <!-- AI Chat Bot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window">
+            <div class="chat-header">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iMzg0IDI1NkMzODQgMjcwLjMgMzc3LjMgMjc3LjMgMzYzLjMgMjg3LjNDMzQ5LjMgMjk3LjMgMzI4IDMwOS4zIDI5OS4zIDMyM0MyNzAuNyAzMzYuNyAyMzcuMyAzNDYuNyAxOTkgMzUzQzE2MC43IDM1OS4zIDExOCAzNjIuMyA3MSAzNjJWMzUwQzExOCAzNTAgMTYwLjcgMzQ3LjMgMTk5IDM0MkMyMzcuMyAzMzYuNyAyNzAuNyAzMjguNyAyOTkuMyAzMThDMzI4IDMwNy4zIDM0OS4zIDI5NS4zIDM2My4zIDI4MS4zQzM3Ny4zIDI2Ny4zIDM4NCAyNTQuNyAzODQgMjQzLjNDMzg0IDIzMiAzNzcuMyAyMTkuMyAzNjMuMyAyMDVDMzQ5LjMgMTkwLjcgMzI4IDE3OC43IDI5OS4zIDE2OEMyNzAuNyAxNTcuMyAyMzcuMyAxNDcuMyAxOTkgMTQyQzE2MC43IDEzNi43IDExOCAxMzMuNyA3MSAxMzNWMTIxQzExOCAxMjEgMTYwLjcgMTIzLjcgMTk5IDEyOUMyMzcuMyAxMzQuNyAyNzAuNyAxNDIuNyAyOTkuMyAxNTNDMzI4IDE2My4zIDM0OS4zIDE3NS4zIDM2My4zIDE4OUMzNzcuMyAyMDIuNyAzODQgMjE3LjMgMzg0IDIzM0MzODQgMjQ4LjcgMzg0IDI1NiAzODQgMjU2Wk0xMjggMzg0VjQ2NEg0ODRWMzg0SDEyOFpNMTI4IDQ4VjEyOEg0ODRWNDhIMTI4WiIvPjwvc3ZnPg==" alt="AI Assistant">
+                <div>
+                    <h3>Smart Bedroom Assistant</h3>
+                    <p>Ask me about the project</p>
+                </div>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm your Smart Bedroom Assistant. How can I help you with our innovation project today?
+                </div>
+                <!-- Messages will be added here dynamically -->
+            </div>
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message here...">
+                <button>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -437,6 +685,106 @@
             }
             
             animate();
+
+            // Chat Bot Functionality
+            const chatButton = document.querySelector('.chatbot-button');
+            const chatWindow = document.querySelector('.chatbot-window');
+            const chatClose = document.querySelector('.chat-close');
+            const chatInput = document.querySelector('.chat-input input');
+            const chatSend = document.querySelector('.chat-input button');
+            const chatMessages = document.querySelector('.chat-messages');
+            const typingIndicator = document.querySelector('.typing-indicator');
+
+            // Toggle chat window
+            chatButton.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+            });
+
+            // Close chat window
+            chatClose.addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+            });
+
+            // Send message function
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // Add user message
+                    addMessage(message, 'user');
+                    chatInput.value = '';
+                    
+                    // Show typing indicator
+                    typingIndicator.style.display = 'flex';
+                    
+                    // Simulate AI response after a short delay
+                    setTimeout(() => {
+                        typingIndicator.style.display = 'none';
+                        const response = generateResponse(message);
+                        addMessage(response, 'bot');
+                        
+                        // Auto-scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1500);
+                }
+            }
+
+            // Send message on button click
+            chatSend.addEventListener('click', sendMessage);
+
+            // Send message on Enter key
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', `${sender}-message`);
+                messageElement.textContent = text;
+                chatMessages.appendChild(messageElement);
+                
+                // Auto-scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Generate AI response based on user input
+            function generateResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                
+                // Project-related responses
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                    return "Hello! I'm the Smart Bedroom Assistant. How can I help you with our innovation project?";
+                } else if (lowerMessage.includes('what') && lowerMessage.includes('project')) {
+                    return "Our project is a Smart Bedroom Innovation that integrates various IoT devices and automation systems to create an intelligent, responsive bedroom environment.";
+                } else if (lowerMessage.includes('feature') || lowerMessage.includes('what can it do')) {
+                    return "The smart bedroom includes automated lighting, climate control, sleep monitoring, voice commands, and energy efficiency features.";
+                } else if (lowerMessage.includes('team') || lowerMessage.includes('group') || lowerMessage.includes('who are you')) {
+                    return "I'm the AI assistant for Group 41's Smart Bedroom Innovation project. Our team consists of talented students working on this innovative solution.";
+                } else if (lowerMessage.includes('technology') || lowerMessage.includes('how does it work')) {
+                    return "We use Arduino microcontrollers, various sensors (temperature, motion, light), IoT connectivity, and custom software to create a seamless smart bedroom experience.";
+                } else if (lowerMessage.includes('document') || lowerMessage.includes('proposal') || lowerMessage.includes('report')) {
+                    return "You can find all our project documents in the links above, including the proposal, presentation, and expenses report.";
+                } else if (lowerMessage.includes('video') || lowerMessage.includes('tutorial') || lowerMessage.includes('demo')) {
+                    return "We have both an AI explanation video and a tutorial video available. Click on the respective buttons above to view them.";
+                } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+                    return "You're welcome! Feel free to ask if you have any more questions about our Smart Bedroom Innovation.";
+                } else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('expense')) {
+                    return "You can view the detailed project expenses by clicking on the 'Expenses' button above. We've focused on cost-effective solutions.";
+                }
+                
+                // Default responses for unrelated questions
+                const defaultResponses = [
+                    "That's an interesting question. Our project focuses on smart bedroom innovations using IoT technology.",
+                    "I'm designed to help with questions about our Smart Bedroom project. Could you rephrase your question?",
+                    "I'm not sure about that, but I can tell you about our smart bedroom features and capabilities!",
+                    "Our team hasn't explored that specific area yet, but we're focused on creating the best smart bedroom experience.",
+                    "That's outside my current knowledge base, but I can help with questions about our project documentation and features."
+                ];
+                
+                return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+            }
         });
     </script>
 </body>
