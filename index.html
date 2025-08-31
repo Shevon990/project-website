@@ -68,7 +68,7 @@
             padding: 0 10px;
         }
         
-        /* New title animation */
+        /* Title animation */
         @keyframes titleAnimation {
             0%, 100% {
                 transform: scale(1) translateY(0);
@@ -116,6 +116,39 @@
             animation: slideInFromTop 1s ease-out 0.2s both;
         }
         
+        .group-attribution {
+            font-size: 1.1rem;
+            color: #ffffff; /* Changed to white as requested */
+            margin-top: 20px;
+            font-weight: 500;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Typewriter animation */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 0.15em solid #a3e635; /* Cursor color */
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 3.5s steps(40, end) 1s both, blink-caret 0.75s step-end infinite;
+        }
+        
+        /* The typing effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #a3e635; }
+        }
+        
         @keyframes slideInFromTop {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -148,6 +181,7 @@
             animation-fill-mode: both;
         }
         
+        /* Updated button colors with more vibrant options for last three buttons */
         .btn:nth-child(1) { 
             background: linear-gradient(45deg, #667eea, #764ba2);
             animation-delay: 0.3s;
@@ -169,15 +203,15 @@
             animation-delay: 0.7s;
         }
         .btn:nth-child(6) { 
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            background: linear-gradient(45deg, #ff9a1f, #ffcc33);
             animation-delay: 0.8s;
         }
         .btn:nth-child(7) { 
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            background: linear-gradient(45deg, #d74177, #ffe98a);
             animation-delay: 0.9s;
         }
         .btn:nth-child(8) { 
-            background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+            background: linear-gradient(45deg, #7928ca, #ff0080);
             animation-delay: 1s;
         }
         
@@ -244,6 +278,10 @@
                 font-size: 1rem;
             }
             
+            .group-attribution {
+                font-size: 0.95rem;
+            }
+            
             .button-container {
                 grid-template-columns: 1fr;
             }
@@ -262,6 +300,12 @@
                 height: 55px;
                 font-size: 14px;
             }
+            
+            .typewriter {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+            }
         }
     </style>
 </head>
@@ -272,6 +316,9 @@
         <div class="header">
             <h1>Smart Bedroom Innovation Hub</h1>
             <p class="subtitle">Explore our project resources, documentation, and multimedia presentations</p>
+            <div class="group-attribution">
+                <div class="typewriter">An innovative project by Group 41</div>
+            </div>
         </div>
         
         <div class="button-container">
@@ -414,6 +461,7 @@
     </script>
 </body>
 </html>
+
 
 
 
