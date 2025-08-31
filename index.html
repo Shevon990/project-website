@@ -118,35 +118,23 @@
         
         .group-attribution {
             font-size: 1.1rem;
-            color: #ffffff; /* Changed to white as requested */
+            color: #ffffff;
             margin-top: 20px;
             font-weight: 500;
-            height: 30px;
-            overflow: hidden;
-            position: relative;
+            animation: smoothFadeIn 2s ease-out 1.5s both;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         
-        /* Typewriter animation */
-        .typewriter {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 0.15em solid #a3e635; /* Cursor color */
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 0.15em;
-            animation: typing 3.5s steps(40, end) 1s both, blink-caret 0.75s step-end infinite;
-        }
-        
-        /* The typing effect */
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        /* The typewriter cursor effect */
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #a3e635; }
+        /* Smooth fade-in animation without cursor */
+        @keyframes smoothFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(15px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         
         @keyframes slideInFromTop {
@@ -300,12 +288,6 @@
                 height: 55px;
                 font-size: 14px;
             }
-            
-            .typewriter {
-                white-space: normal;
-                border-right: none;
-                animation: none;
-            }
         }
     </style>
 </head>
@@ -316,9 +298,7 @@
         <div class="header">
             <h1>Smart Bedroom Innovation Hub</h1>
             <p class="subtitle">Explore our project resources, documentation, and multimedia presentations</p>
-            <div class="group-attribution">
-                <div class="typewriter">An innovative project by Group 41</div>
-            </div>
+            <p class="group-attribution">An innovative project by Group 41</p>
         </div>
         
         <div class="button-container">
@@ -461,6 +441,7 @@
     </script>
 </body>
 </html>
+
 
 
 
