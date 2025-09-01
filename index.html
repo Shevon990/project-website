@@ -772,7 +772,7 @@
         </div>
         
         <div class="footer">
-            <p>© 2023 Smart Bedroom Innovation | All Rights Reserved</p>
+            <p>© 2025 Smart Bedroom Innovation | All Rights Reserved</p>
         </div>
     </div>
 
@@ -785,8 +785,8 @@
             <div class="chat-header">
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTM4NCAyNTZDMzg0IDI3MC4zIDM3Ny4zIDI3Ny4zIDM2My4zIDI4Ny4zMzY2NjdDMzQ5LjMgMjk3LjM2NjY3IDMyOCAzMDkuMzY2NjcgMjk5LjMzMzMzIDMyM0MyNzAuNjY2NjcgMzM2LjYzMzMgMjM3LjMzMzMzIDM0Ni42NjY3IDE5OSAzNTNDMTYwLjY2NjY3IDM1OS4zMzMzIDExOCAzNjIuMzMzMyA3MSAzNjJWMzUwQzExOCAzNTAgMTYwLjY2NjY3IDM0Ny4zMzMzIDE5OSAzNDJDMjM3LjMzMzMzIDMzNi42NjY3IDI3MC42NjY2NyAzMjguNjY2NyAyOTkuMzMzMzMgMzE4QzMyOCAzMDcuMzMzMyAzNDkuMyAyOTUuMzMzMyAzNjMuMyAyODEuMzMzM0MzNzcuMyAyNjcuMzMzMyAzODQgMjU0LjY2NjcgMzg0IDI0My4zMzMzQzM4NCAyMzIgMzc3LjMgMjE5LjMzMzMgMzYzLjMgMjA1QzM0OS4zIDE5MC42NjY3IDMyOCAxNzguNjY2NyAyOTkuMzMzMzMgMTY4QzI3MC42NjY2NyAxNTcuMzMzMyAyMzcuMzMzMzMgMTQ3LjMzMzMgMTk5IDE0MkMxNjAuNjY2NjcgMTM2LjY2NjcgMTE4IDEzMy42NjY3IDcxIDEzM1YxMjFDMTE4IDEyMSAxNjAuNjY2NjcgMTIzLjY2NjcgMTk5IDEyOUMyMzcuMzMzMzMgMTM0LjY2NjcgMjcwLjY2NjY3IDE0Mi42NjY3IDI5OS4zMzMzMyAxNTNDMzI4IDE2My4zMzMzIDM0OS4zIDE3NS4zMzMzIDM2My4zIDE4OUMzNzcuMyAyMDIuNjY2NyAzODQgMjE3LjMzMzMgMzg0IDIzM0MzODQgMjQ4LjY2NjcgMzg0IDI1NiAzODQgMjU2Wk0xMjggMzg0VjQ2NEg0ODRWMzg0SDEyOFpNMTI4IDQ4VjEyOEg0ODRWNDhIMTI4WiIvPjwvc3ZnPg==" alt="AI Assistant">
                 <div>
-                    <h3>IoT & Arduino Assistant</h3>
-                    <p>Ask me about IoT, Arduino, ESP32, and sensors</p>
+                    <h3>IoT Assistant</h3>
+                    <p>Ask me about IoT, and I’ll show you how sensors whisper secrets to microcontrollers</p>
                 </div>
                 <button class="chat-close">
                     <i class="fas fa-times"></i>
@@ -1006,57 +1006,57 @@
                 if (lowerMessage.includes('iot') || lowerMessage.includes('internet of things')) {
                     return "IoT (Internet of Things) refers to the network of physical objects embedded with sensors, software, and other technologies to connect and exchange data with other devices over the internet. In our smart bedroom, we use IoT to connect various sensors and devices for automation and remote control.";
                 } else if (lowerMessage.includes('arduino')) {
-                    return "Arduino is an open-source electronics platform based on easy-to-use hardware and software. Arduino boards can read inputs from sensors and control outputs like lights, motors, and other devices. We're using Arduino in our project to process sensor data and control bedroom automation.";
+                    return "Arduino is an open-source electronics platform based on easy-to-use hardware and software. Arduino boards can read inputs from sensors and control outputs like lights, motors, and other devices.";
                 } else if (lowerMessage.includes('esp32') || lowerMessage.includes('esp-32')) {
                     return "The ESP32 is a series of low-cost, low-power system-on-a-chip microcontrollers with integrated Wi-Fi and dual-mode Bluetooth. It's more powerful than most Arduino boards and is excellent for IoT projects. We use ESP32 for wireless communication in our smart bedroom system.";
                 } else if (lowerMessage.includes('sensor')) {
                     if (lowerMessage.includes('temperature') || lowerMessage.includes('temp')) {
                         return "Temperature sensors like the DHT22 or DS18B20 measure ambient temperature. They're essential for climate control in our smart bedroom, allowing the system to maintain optimal sleeping temperatures.";
                     } else if (lowerMessage.includes('humidity')) {
-                        return "Humidity sensors (often combined with temperature sensors) measure moisture levels in the air. We use them to ensure comfortable sleeping conditions and prevent mold growth.";
+                        return "Humidity sensors (often combined with temperature sensors) measure moisture levels in the air.";
                     } else if (lowerMessage.includes('motion') || lowerMessage.includes('pir')) {
                         return "PIR (Passive Infrared) motion sensors detect movement by measuring infrared radiation. In our project, they're used to detect occupancy and trigger actions like turning lights on/off.";
                     } else if (lowerMessage.includes('light') || lowerMessage.includes('ldr')) {
-                        return "Light sensors (LDRs or photoresistors) detect ambient light levels. We use them to automate lighting based on natural light availability.";
+                        return "Light sensors (LDRs or photoresistors) detect ambient light levels.";
                     } else {
                         return "Sensors are devices that detect events or changes in the environment and send the information to other electronics. In our smart bedroom, we use various sensors including temperature, humidity, motion, and light sensors to create an automated, responsive environment.";
                     }
                 } else if (lowerMessage.includes('actuator')) {
-                    return "Actuators are components that cause something to happen in the physical world. In our project, we use relays to control lights and appliances, servo motors for automated curtains/blinds, and buzzers for alerts.";
+                    return "Actuators are components that cause something to happen in the physical world. In our project, we use stepper motors for automated curtains/blinds. ";
                 } else if (lowerMessage.includes('relay')) {
-                    return "Relays are electrically operated switches that allow a low-power circuit to control a higher-power circuit. We use relays in our smart bedroom to safely control AC appliances like lights and fans using our microcontroller.";
+                    return "Relays are electrically operated switches that allow a low-power circuit to control a higher-power circuit.";
                 } else if (lowerMessage.includes('wifi') || lowerMessage.includes('wi-fi')) {
-                    return "Wi-Fi connectivity allows our smart bedroom system to connect to your home network, enabling remote control via smartphone apps and integration with other smart home devices.";
+                    return "Wi-Fi connectivity allows our smart bedroom system to connect to your home network, enabling remote control via smartphone apps(Blynk App) and integration with other smart home devices.";
                 } else if (lowerMessage.includes('bluetooth')) {
-                    return "Bluetooth provides short-range wireless communication. We use it in our project for local control and configuration without needing Wi-Fi access.";
+                    return "Bluetooth provides short-range wireless communication.";
                 } else if (lowerMessage.includes('mqtt')) {
                     return "MQTT (Message Queuing Telemetry Transport) is a lightweight messaging protocol ideal for IoT devices. It enables efficient communication between our smart bedroom components with minimal power consumption.";
                 } else if (lowerMessage.includes('code') || lowerMessage.includes('program')) {
                     return "Our smart bedroom system is programmed primarily in C++ using the Arduino IDE. The code handles sensor reading, decision making, device control, and communication. We use modular programming for easier maintenance and updates.";
                 } else if (lowerMessage.includes('power') || lowerMessage.includes('battery')) {
-                    return "For power, we use a combination of mains power for always-on devices and battery power for sensors and wireless modules. We've implemented power-saving features like sleep modes to extend battery life.";
+                    return "For power, we use a combination of mains power for always-on devices and battery power for sensors and wireless modules.";
                 } else if (lowerMessage.includes('security') || lowerMessage.includes('privacy')) {
                     return "We take security seriously. Our system uses encrypted communication, secure authentication, and local processing for sensitive data. You can also configure privacy zones where certain sensors are disabled.";
                 } else if (lowerMessage.includes('automation') || lowerMessage.includes('automate')) {
-                    return "Our automation system uses rules and schedules to control the bedroom environment. For example, lights can gradually brighten to simulate sunrise for a natural wake-up experience, or the temperature can adjust based on sleep stages.";
-                } else if (lowerMessage.includes('sleep') || lowerMessage.includes('bed')) {
-                    return "The smart bed features pressure sensors to detect occupancy and sleep position, temperature regulation for optimal sleep climate, and even snore detection that can slightly elevate the head position to reduce snoring.";
-                } else if (lowerMessage.includes('light') || lowerMessage.includes('lighting')) {
-                    return "Our lighting system includes color-tunable LEDs that can adjust color temperature throughout the day (cool white for morning, warm white for evening), dimming capabilities, and motion-activated night lights.";
-                } else if (lowerMessage.includes('climate') || lowerMessage.includes('temperature control')) {
-                    return "The climate control system maintains optimal temperature and humidity levels for sleep. It can integrate with your existing HVAC system or use standalone heaters/coolers/humidifiers for precise control.";
+                    return "Our bedroom automation system operates based on predefined rules and schedules. For example, the curtains automatically open at 7:00 A.M. to let in the morning light and close at 7:00 P.M. to ensure privacy and comfort.";
+                } else if (lowerMessage.includes('how it works') || lowerMessage.includes('fan automtion')||lowerMessage.includes('light automation')) {
+                    return "When a person approaches the room, Sensor 01 ,placed outside the door—detects motion. If Sensor 2, located inside the room, also detects motion, it confirms that the person has entered. Upon confirmation, the bulb and fan automatically turn on. When the person exits, Sensor 2 detects the motion first, and if Sensor 1 is triggered afterward, it confirms the person has left the room—prompting both the light and fan to turn off. Additionally, the fan speed is automatically regulated based on the room’s temperature-ensuring optimal comfort by adjusting airflow as the environment changes.";
+                } else if (lowerMessage.includes('Blynk APP') || lowerMessage.includes('mobile app')) {
+                    return "The system is controlled via the Blynk App, allowing users to monitor and adjust parameters remotely through a user-friendly interface.";
+                } else if (lowerMessage.includes('curtain') || lowerMessage.includes('curtain automation')) {
+                    return "The curtain system is programmed to open automatically at 7:00 a.m. and close at 7:00 p.m., providing consistent lighting and privacy control without user intervention.";
                 } else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('expensive')) {
-                    return "A basic smart bedroom system can be built for around $200-300 using Arduino/ESP32 components. Commercial systems can cost significantly more. Our project focuses on cost-effective DIY solutions that provide most premium features at a fraction of the cost.";
+                    return "A basic smart bedroom system can be built for around $40-50 using Arduino/ESP32 components. Commercial systems can cost significantly more. Our project focuses on cost-effective DIY solutions that provide most premium features at a fraction of the cost.";
                 } else if (lowerMessage.includes('beginner') || lowerMessage.includes('start') || lowerMessage.includes('learn')) {
                     return "To get started with IoT and Arduino, I recommend beginning with an Arduino Starter Kit. Learn the basics of programming and electronics, then move to ESP32 for WiFi projects. There are many free online resources and courses available.";
                 } else if (lowerMessage.includes('tutorial') || lowerMessage.includes('guide') || lowerMessage.includes('how to')) {
-                    return "We have a comprehensive tutorial video that shows how to build a smart bedroom system step-by-step. You can find it in the links above. It covers everything from component selection to programming and installation.";
+                    return "We have a comprehensive tutorial video. It covers everything from component selection to programming and installation.";
                 } else if (lowerMessage.includes('component') || lowerMessage.includes('part') || lowerMessage.includes('shopping list')) {
-                    return "Basic components for a smart bedroom include: Arduino/ESP32 board, temperature/humidity sensor, PIR motion sensor, light sensor, relays, LEDs, breadboard, jumper wires, and power supplies. You can find detailed component lists in our project documentation.";
+                    return "Basic components for our smart bedroom include: ESP32 board, DHT 11 temperature sensor, IR sensors, L298N Motor Driver,DS3231 RTC module, Stepper Motor, DC fan, LEDs, breadboard, jumper wires, and power supplies. You can find detailed component lists in our project documentation.";
                 } else if (lowerMessage.includes('problem') || lowerMessage.includes('issue') || lowerMessage.includes('trouble') || lowerMessage.includes('error')) {
                     return "Common issues in IoT projects include power problems, WiFi connectivity, sensor accuracy, and code bugs. Make sure to use appropriate power supplies, check your WiFi signal strength, calibrate sensors, and test your code incrementally. Our tutorial covers troubleshooting common problems.";
                 } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-                    return "Hello! I'm your IoT and Arduino assistant. I can help with questions about Internet of Things, Arduino, ESP32, sensors, and our Smart Bedroom project. What would you like to know?";
+                    return "Hello! I'm your IoT assistant. I can help with questions about Internet of Things, Arduino, ESP32, sensors, and our Smart Bedroom project. What would you like to know?";
                 } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
                     return "You're welcome! Feel free to ask if you have any more questions about IoT, Arduino, or our Smart Bedroom project. Happy building!";
                 }
@@ -1076,6 +1076,7 @@
     </script>
 </body>
 </html>
+
 
 
 
