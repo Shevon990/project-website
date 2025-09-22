@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Your existing CSS remains unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -197,6 +198,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: 0.5s;
+            transform: translateX(-100%);
         }
         
         .group-attribution:hover::before {
@@ -205,7 +207,7 @@
         
         /* Smooth fade-in animation */
         @keyframes smoothFadeIn {
-            0% {
+           0% {
                 opacity: 0;
                 transform: translateY(15px) scale(0.95);
             }
@@ -790,10 +792,10 @@
         </button>
         <div class="chatbot-window">
             <div class="chat-header">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTM4NCAyNTZDMzg0IDI3MC4zIDM3Ny4zIDI3Ny4zIDM2My4zIDI4Ny4zMzY2NjdDMzQ5LjMgMjk3LjM2NjY3IDMyOCAzMDkuMzY2NjcgMjk5LjMzMzMzIDMyM0MyNzAuNjY2NjcgMzM2LjYzMzMgMjM3LjMzMzMzIDM0Ni42NjY3IDE5OSAzNTNDMTYwLjY2NjY3IDM1OS4zMzMzIDExOCAzNjIuMzMzMyA3MSAzNjJWMzUwQzExOCAzNTAgMTYwLjY2NjY3IDM0Ny4zMzMzIDE5OSAzNDJDMjM3LjMzMzMzIDMzNi42NjY3IDI3MC42NjY2NyAzMjguNjY2NyAyOTkuMzMzMzMgMzE4QzMyOCAzMDcuMzMzMyAzNDkuMyAyOTUuMzMzMyAzNjMuMyAyODEuMzMzM0MzNzcuMyAyNjcuMzMzMyAzODQgMjU0LjY2NjcgMzg0IDI0My4zMzMzQzM4NCAyMzIgMzc3LjMgMjE5LjMzMzMgMzYzLjMgMjA1QzM0OS4zIDE5MC42NjY3IDMyOCAxNzguNjY2NyAyOTkuMzMzMzMgMTY4QzI3MC42NjY2NyAxNTcuMzMzMyAyMzcuMzMzMzMgMTQ3LjMzMzMgMTk5IDE0MkMxNjAuNjY2NjcgMTM2LjY2NjcgMTE4IDEzMy42NjY3IDcxIDEzM1YxMjFDMTE4IDEyMSAxNjAuNjY2NjcgMTIzLjY2NjcgMTk5IDEyOUMyMzcuMzMzMzMgMTM0LjY2NjcgMjcwLjY2NjY3IDE0Mi42NjY3IDI5OS4zMzMzMyAxNTNDMzI4IDE2My4zMzMzIDM0OS4zIDE3NS4zMzMzIDM2My4zIDE4OUMzNzcuMyAyMDIuNjY2NyAzODQgMjE3LjMzMzMgMzg0IDIzM0MzODQgMjQ4LjY2NjcgMzg0IDI1NiAzODQgMjU2Wk0xMjggMzg0VjQ2NEg0ODRWMzg0SDEyOFpNMTI4IDQ4VjEyOEg0ODRWNDhIMTI4WiIvPjwvc3ZnPg==" alt="AI Assistant">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxs=" alt="AI Assistant">
                 <div>
                     <h3>Arduino Assistant</h3>
-                    <p>Ask me about Arduino, and I’ll show you how sensors whisper secrets to microcontrollers</p>
+                    <p>Ask me about Arduino, and I'll show you how sensors whisper secrets to microcontrollers</p>
                 </div>
                 <button class="chat-close">
                     <i class="fas fa-times"></i>
@@ -833,9 +835,6 @@
                 node.style.top = `${Math.random() * 100}%`;
                 node.style.animation = `pulse ${2 + Math.random() * 3}s infinite alternate`;
                 iotBackground.appendChild(node);
-                
-                // Add animation
-                node.style.animation = `pulse ${2 + Math.random() * 3}s infinite alternate`;
             }
             
             // Create IoT devices
@@ -845,43 +844,7 @@
                 device.style.left = `${Math.random() * 100}%`;
                 device.style.top = `${Math.random() * 100}%`;
                 device.textContent = deviceIcons[Math.floor(Math.random() * deviceIcons.length)];
-                device.style.animation = `glow ${3 + Math.random() * 4}s infinite alternate`;
                 iotBackground.appendChild(device);
-            }
-            
-            // Create connections between nodes
-            const nodes = document.querySelectorAll('.iot-node, .iot-device');
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    if (Math.random() > 0.7) { // Only connect some nodes
-                        const node1 = nodes[i];
-                        const node2 = nodes[j];
-                        
-                        const x1 = parseFloat(node1.style.left);
-                        const y1 = parseFloat(node1.style.top);
-                        const x2 = parseFloat(node2.style.left);
-                        const y2 = parseFloat(node2.style.top);
-                        
-                        // Calculate distance
-                        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                        
-                        if (distance < 30) { // Only connect nearby nodes
-                            const connection = document.createElement('div');
-                            connection.classList.add('iot-connection');
-                            
-                            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-                            const length = distance;
-                            
-                            connection.style.width = `${length}%`;
-                            connection.style.left = `${x1}%`;
-                            connection.style.top = `${y1}%`;
-                            connection.style.transform = `rotate(${angle}deg)`;
-                            connection.style.opacity = `${0.1 + Math.random() * 0.2}`;
-                            
-                            iotBackground.appendChild(connection);
-                        }
-                    }
-                }
             }
             
             // Add CSS for animations
@@ -896,10 +859,17 @@
                     0% { filter: drop-shadow(0 0 5px var(--accent-blue)); }
                     100% { filter: drop-shadow(0 0 15px var(--accent-blue)); }
                 }
+                
+                .iot-node {
+                    animation: pulse ${2 + Math.random() * 3}s infinite alternate;
+                }
+                
+                .iot-device {
+                    animation: glow ${3 + Math.random() * 4}s infinite alternate;
+                }
             `;
             document.head.appendChild(style);
 
-            
             // Chat Bot Functionality
             const chatButton = document.querySelector('.chatbot-button');
             const chatWindow = document.querySelector('.chatbot-window');
@@ -910,20 +880,17 @@
             const typingIndicator = document.querySelector('.typing-indicator');
 
             // Toggle chat window
-            chatButton.addEventListener('click', (e) => {
-                 e.stopPropagation(); // Prevent event from bubbling up
-                 chatWindow.classList.toggle('active');
-                 if (chatWindow.classList.contains('active')) {
-                     chatInput.focus();
-                 }
+            chatButton.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+                if (chatWindow.classList.contains('active')) {
+                    chatInput.focus();
+                }
             });
 
-// Close chat window when clicking outside
-                 document.addEventListener('click', (e) => {
-                     if (chatWindow.classList.contains('active') && !chatWindow.contains(e.target) && !chatButton.contains(e.target)) {
-                         chatWindow.classList.remove('active');
-                     }
-                  });
+            // Close chat window
+            chatClose.addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+            });
 
             // Send message function
             function sendMessage() {
@@ -962,45 +929,14 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            // Get AI response from DeepSeek API
+            // Get AI response
             async function getAIResponse(message) {
                 try {
-                    // This is a placeholder for the actual API call
-                    // In a real implementation, you would use your API key and endpoint
-                    // const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //         'Authorization': 'Bearer YOUR_DEEPSEEK_API_KEY'
-                    //     },
-                    //     body: JSON.stringify({
-                    //         model: 'deepseek-chat',
-                    //         messages: [
-                    //             {
-                    //                 role: 'system',
-                    //                 content: 'You are an expert assistant specializing in IoT, Arduino, ESP32, sensors, and smart home technology. Provide helpful, detailed, and accurate information about these topics. If asked about something outside your expertise, politely redirect to IoT/Arduino topics.'
-                    //             },
-                    //             {
-                    //                 role: 'user',
-                    //                 content: message
-                    //             }
-                    //         ],
-                    //         max_tokens: 500
-                    //     })
-                    // });
-                    
-                    // const data = await response.json();
-                    // const aiResponse = data.choices[0].message.content;
-                    
                     // For demo purposes, we'll use a local response generator
-                    // In a real implementation, replace this with the API call above
                     setTimeout(() => {
                         typingIndicator.style.display = 'none';
                         const response = generateLocalResponse(message);
                         addMessage(response, 'bot');
-                        
-                        // Auto-scroll to bottom
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
                     }, 1500);
                 } catch (error) {
                     console.error('Error getting AI response:', error);
@@ -1008,6 +944,8 @@
                     addMessage("I'm having trouble connecting to the knowledge base. Please try again later.", 'bot');
                 }
             }
+
+   
 
             // Enhanced local response generator for IoT/Arduino questions
             function generateLocalResponse(message) {
@@ -1086,6 +1024,7 @@
     </script>
 </body>
 </html>
+
 
 
 
