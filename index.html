@@ -909,17 +909,22 @@
             const typingIndicator = document.querySelector('.typing-indicator');
 
             // Toggle chat window
-            chatButton.addEventListener('click', () => {
-                chatWindow.classList.toggle('active');
-                if (chatWindow.classList.contains('active')) {
-                    chatInput.focus();
-                }
-            });
+chatButton.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent event from bubbling up
+    chatWindow.classList.toggle('active');
+    if (chatWindow.classList.contains('active')) {
+        chatInput.focus();
+    }
+});
 
-            // Close chat window
-            chatClose.addEventListener('click', () => {
-                chatWindow.classList.remove('active');
-            });
+// Close chat window when clicking outside
+document.addEventListener('click', (e) => {
+    if (chatWindow.classList.contains('active') && 
+        !chatWindow.contains(e.target) && 
+        !chatButton.contains(e.target)) {
+        chatWindow.classList.remove('active');
+    }
+});
 
             // Send message function
             function sendMessage() {
@@ -1082,6 +1087,7 @@
     </script>
 </body>
 </html>
+
 
 
 
