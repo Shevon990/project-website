@@ -1005,23 +1005,23 @@
                 // IoT-related responses
                 if (lowerMessage.includes('iot') || lowerMessage.includes('internet of things')|| lowerMessage.includes('what is IOT?')) {
                     return "IoT (Internet of Things) refers to the network of physical objects embedded with sensors, software, and other technologies to connect and exchange data with other devices over the internet. In our smart bedroom, we use IoT to connect various sensors and devices for automation and remote control.";
-                } else if (lowerMessage.includes('arduino') || lowerMessage.includes('What does mean by Arduino')|| lowerMessage.includes('what is Arduino?')) {
+                } else if (lowerMessage.includes('arduino') || lowerMessage.includes('what does mean by arduino')|| lowerMessage.includes('what is arduino?')) {
                     return "Arduino is an open-source electronics platform based on easy-to-use hardware and software. Arduino boards can read inputs from sensors and control outputs like lights, motors, and other devices.";
-                } else if (lowerMessage.includes('esp32') || lowerMessage.includes('esp-32')||lowerMessage.includes('What is ESP32?') || lowerMessage.includes('explain esp 32')|| lowerMessage.includes('what is happening inside esp 32?')) {
+                } else if (lowerMessage.includes('esp32') || lowerMessage.includes('esp-32')||lowerMessage.includes('what is esp32?') || lowerMessage.includes('explain esp 32')|| lowerMessage.includes('what is happening inside esp 32?')) {
                     return "The ESP32 is a series of low-cost, low-power system-on-a-chip microcontrollers with integrated Wi-Fi and dual-mode Bluetooth. It's more powerful than most Arduino boards and is excellent for IoT projects. We use ESP32 for wireless communication in our smart bedroom system.";
                 } else if (lowerMessage.includes('sensor')) {
                     if (lowerMessage.includes('temperature') || lowerMessage.includes('temp')) {
                         return "Temperature sensors like the DHT22 or DS18B20 measure ambient temperature. They're essential for climate control in our smart bedroom, allowing the system to maintain optimal sleeping temperatures.";
                     } else if (lowerMessage.includes('humidity')) {
                         return "Humidity sensors (often combined with temperature sensors) measure moisture levels in the air.";
-                    } else if (lowerMessage.includes('IR') || lowerMessage.includes('what is the responsibility of IR sensor?')) {
+                    } else if (lowerMessage.includes('ir') || lowerMessage.includes('what is the responsibility of ir sensor?')) {
                         return " In our Smart Bedroom project, IR obstacle avoidance sensors detect nearby presence by emitting infrared light and sensing its reflection off objects. When someone enters the room, the reflected signal triggers the microcontroller to perform actions like turning lights on or off—making the space responsive and intelligent.";
                     } else if (lowerMessage.includes('light') || lowerMessage.includes('ldr')) {
                         return "Light sensors (LDRs or photoresistors) detect ambient light levels.";
                     } else {
                         return "Sensors are devices that detect events or changes in the environment and send the information to other electronics. In our smart bedroom, we use various sensors including temperature and IR sensors to create an automated, responsive environment.";
                     }
-                } else if (lowerMessage.includes('actuator')|| lowerMessage.includes('What are actuators?')) {
+                } else if (lowerMessage.includes('actuator')|| lowerMessage.includes('what are actuators?')) {
                     return "Actuators are components that cause something to happen in the physical world. In our project, we use stepper motors for automated curtains/blinds. ";
                 } else if (lowerMessage.includes('relay')) {
                     return "Relays are electrically operated switches that allow a low-power circuit to control a higher-power circuit.";
@@ -1037,10 +1037,10 @@
                     return "For power, we use a combination of mains power for always-on devices and battery power for sensors and wireless modules.";
                 } else if (lowerMessage.includes('security') || lowerMessage.includes('privacy')) {
                     return "We take security seriously. Our system uses encrypted communication, secure authentication, and local processing for sensitive data. You can also configure privacy zones where certain sensors are disabled.";
-                } else if (lowerMessage.includes('how it works') || lowerMessage.includes('fan automation')||lowerMessage.includes('light automation')|| lowerMessage.includes('What is happening in your smart bedroom?')||lowerMessage.includes('How the system works')) {
-                    return "When someone approaches the room, Sensor 01, placed just outside the door, detects motion. If Sensor 02, located inside the room, also registers movement shortly after, the system confirms that the person has entered🔌 Upon entry, the microcontroller triggers the bulb and fan to turn on automatically, creating a responsive and welcoming environment. When the person exits, the sequence reverses: Sensor 02 detects motion first (as the person moves toward the door), followed by Sensor 01. This confirms the person has left, prompting the system to switch off both the light and fan to conserve energy.🌡️ Meanwhile, the fan speed is dynamically regulated based on real-time room temperature. As the environment warms or cools, the system adjusts airflow to maintain optimal comfort—no manual tweaking required."
+                } else if (lowerMessage.includes('how it works') || lowerMessage.includes('fan automation')||lowerMessage.includes('light automation')|| lowerMessage.includes('What is happening in your smart bedroom?')||lowerMessage.includes('how the system works')) {
+                    return "When someone approaches the room, Sensor 01, placed just outside the door, detects motion. If Sensor 02, located inside the room, also registers movement shortly after, the system confirms that the person has entered🔌 Upon entry, the microcontroller triggers the bulb and fan to turn on automatically, creating a responsive and welcoming environment. When the person exits, the sequence reverses: Sensor 02 detects motion first (as the person moves toward the door), followed by Sensor 01. This confirms the person has left, prompting the system to switch off both the light and fan to conserve energy.🌡️ Meanwhile, the fan speed is dynamically regulated based on real-time room temperature. As the environment warms or cools, the system adjusts airflow to maintain optimal comfort—no manual tweaking required.";
 
-                } else if (lowerMessage.includes('Blynk APP') || lowerMessage.includes('mobile app')) {
+                } else if (lowerMessage.includes('blynk aPP') || lowerMessage.includes('mobile app')) {
                     return "The system is controlled via the Blynk App, allowing users to monitor and adjust parameters remotely through a user-friendly interface.";
                 } else if (lowerMessage.includes('curtain') || lowerMessage.includes('curtain automation')) {
                     return "The curtain System can be controlled via the Blynk mobile app.";
@@ -1054,7 +1054,7 @@
                     return "Basic components for our smart bedroom include: ESP32 board, DHT 11 temperature sensor, IR sensors, L298N Motor Driver, Stepper Motor, DC fan, LEDs, breadboard, jumper wires, and power supplies. You can find detailed component lists in our project documentation.";
                 } else if (lowerMessage.includes('problem') || lowerMessage.includes('issue') || lowerMessage.includes('trouble') || lowerMessage.includes('error')) {
                     return "Common issues in IoT projects include power problems, WiFi connectivity, sensor accuracy, and code bugs. Make sure to use appropriate power supplies, check your WiFi signal strength, calibrate sensors, and test your code incrementally. Our tutorial covers troubleshooting common problems.";
-                } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')||lowerMessage.includes('what's Up')) {
+                } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')||lowerMessage.includes('what's up')) {
                     return "Hello! I'm your Arduino assistant. I can help with questions about Internet of Things, Arduino, ESP32, sensors, and our Smart Bedroom project. What would you like to know?";
                 } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
                     return "You're welcome! Feel free to ask if you have any more questions about IoT, Arduino, or our Smart Bedroom project. Happy building!";
@@ -1075,6 +1075,7 @@
     </script>
 </body>
 </html>
+
 
 
 
