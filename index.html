@@ -899,6 +899,7 @@
             `;
             document.head.appendChild(style);
 
+            
             // Chat Bot Functionality
             const chatButton = document.querySelector('.chatbot-button');
             const chatWindow = document.querySelector('.chatbot-window');
@@ -909,22 +910,20 @@
             const typingIndicator = document.querySelector('.typing-indicator');
 
             // Toggle chat window
-chatButton.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent event from bubbling up
-    chatWindow.classList.toggle('active');
-    if (chatWindow.classList.contains('active')) {
-        chatInput.focus();
-    }
-});
+            chatButton.addEventListener('click', (e) => {
+                 e.stopPropagation(); // Prevent event from bubbling up
+                 chatWindow.classList.toggle('active');
+                 if (chatWindow.classList.contains('active')) {
+                     chatInput.focus();
+                 }
+            });
 
 // Close chat window when clicking outside
-document.addEventListener('click', (e) => {
-    if (chatWindow.classList.contains('active') && 
-        !chatWindow.contains(e.target) && 
-        !chatButton.contains(e.target)) {
-        chatWindow.classList.remove('active');
-    }
-});
+                 document.addEventListener('click', (e) => {
+                     if (chatWindow.classList.contains('active') && !chatWindow.contains(e.target) && !chatButton.contains(e.target)) {
+                         chatWindow.classList.remove('active');
+                     }
+                  });
 
             // Send message function
             function sendMessage() {
@@ -1087,6 +1086,7 @@ document.addEventListener('click', (e) => {
     </script>
 </body>
 </html>
+
 
 
 
